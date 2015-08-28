@@ -1,14 +1,21 @@
 Bundler.require
+require 'yaml'
 
 class App < Sinatra::Base
   get '/' do
-    @bg_color = generate_background_color
+    @body_color = generate_random_color
+    @skin_color = random_skin_tone
     erb :index
   end
 
   private
 
-  def generate_background_color
+  def random_skin_tone
+    skin_tones = YAML.load_file('skin_tones.yml')["skin_tones"]
+    skin_tones.sample.join(', ')
+  end
+
+  def generate_random_color
     red_range = 0...255
     blue_range = 0...255
     green_range = 0...255
