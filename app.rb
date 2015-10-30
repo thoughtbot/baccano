@@ -5,6 +5,7 @@ class App < Sinatra::Base
   get '/' do
     @body_color = fillify(rgbify(generate_random_color))
     @skin_color = fillify(rgbify(random_skin_tone))
+
     erb :index
   end
 
