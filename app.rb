@@ -1,11 +1,15 @@
 Bundler.require
 require 'yaml'
 
+require_relative './color_generator'
+
 class App < Sinatra::Base
   get '/' do
-    @body_color = fillify(rgbify(generate_random_color))
-    @body_detail_color = fillify(rgbify(generate_random_color))
-    @skin_color = fillify(rgbify(random_skin_tone))
+    generator = ColorGenerator.new
+
+    @body_color = present(generator.body_color)
+    @body_detail_color = present(generator.body_detail_color)
+    @skin_color = present(random_skin_tone)
 
     erb :index
   end
@@ -17,14 +21,8 @@ class App < Sinatra::Base
     skin_tones.sample.join(', ')
   end
 
-  def generate_random_color
-    red_range = 0...255
-    blue_range = 0...255
-    green_range = 0...255
-
-    [red_range, blue_range, green_range].map do |color_range|
-      color_range.to_a.sample
-    end.join(', ')
+  def present(color)
+    fillify(rgbify(color))
   end
 
   def rgbify(val)

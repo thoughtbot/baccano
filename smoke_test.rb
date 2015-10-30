@@ -13,6 +13,6 @@ class SmokeTest < MiniTest::Unit::TestCase
 
   def test_no_smoking
     get '/'
-    last_response.status
+    assert_equal 200, last_response.status
   end
 end
