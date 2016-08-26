@@ -14,12 +14,20 @@ class App < Sinatra::Base
     @body_color = fillify(primary_color.css_rgba)
     @body_highlight_color = fillify(primary_color.lighten_by(70).css_rgba)
     @skin_color = fillify(random_skin_tone.css_rgba)
-    @glasses = random_attribute_partial("glasses")
+    @glasses = percentage(60, "") { random_attribute_partial("glasses") }
 
     erb :index
   end
 
   private
+
+  def percentage(odds, default)
+    if (0...100).to_a.sample < odds
+      default
+    else
+      yield
+    end
+  end
 
   def random_attribute_partial(name)
     Dir.glob("./views/partials/#{name}/*.erb").map do |path|
