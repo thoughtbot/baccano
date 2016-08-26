@@ -11,6 +11,10 @@ class App < Sinatra::Base
 
   private
 
+  def glasses
+    glasses = Dir.glob("./partials/*.svg").map { |glasses| Glasses.new(glasses) }
+  end
+
   def random_skin_tone
     skin_tones = YAML.load_file('skin_tones.yml')["skin_tones"]
     skin_tones.sample.join(', ')
