@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    color (1.8)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -16,8 +17,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  color
   rack-test
   sinatra
 
 BUNDLED WITH
-   1.10.6
+   1.12.5

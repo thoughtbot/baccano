@@ -10,8 +10,10 @@ class App < Sinatra::Base
 
   get '/:seed' do
     srand params[:seed].to_i
-    @body_color = fillify(rgbify(generate_random_color))
-    @skin_color = fillify(rgbify(random_skin_tone))
+    primary_color = generate_random_color
+    @body_color = fillify(primary_color.css_rgba)
+    @body_highlight_color = fillify(primary_color.lighten_by(70).css_rgba)
+    @skin_color = fillify(random_skin_tone.css_rgba)
     @glasses = random_attribute_partial("glasses")
 
     erb :index
@@ -26,16 +28,17 @@ class App < Sinatra::Base
   end
 
   def random_skin_tone
-    skin_tones = YAML.load_file('skin_tones.yml')["skin_tones"]
-    skin_tones.sample.join(', ')
+    red, green, blue = YAML.load_file('skin_tones.yml')["skin_tones"].sample
+    Color::RGB.new(red, green, blue)
   end
 
-  def present(color)
-    fillify(rgbify(color))
-  end
+ def generate_random_color
+    random_red = (0...255).to_a.sample
+    random_green = (0...255).to_a.sample
+    random_blue = (0...255).to_a.sample
 
-  def rgbify(val)
-    'rgb(' + val + ')'
+    Color::RGB.new(random_red, random_green, random_blue)
+
   end
 
   def fillify(val)
