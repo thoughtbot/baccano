@@ -8,7 +8,7 @@ class App < Sinatra::Base
   end
 
   get '/:seed' do
-    srand params[:seed].to_i
+    srand params[:seed].to_i(36)
     primary_color = generate_random_color
     background_color = random_different_color(primary_color)
     @body_color = fillify(primary_color.css_rgba)
