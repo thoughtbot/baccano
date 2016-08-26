@@ -5,16 +5,22 @@ require_relative './color_generator'
 
 class App < Sinatra::Base
   get '/' do
-    generator = ColorGenerator.new
+   redirect "/#{rand(10000)}"
+  end
 
-    @body_color = present(generator.body_color)
-    @body_detail_color = present(generator.body_detail_color)
-    @skin_color = present(random_skin_tone)
+  get '/:seed' do
+    srand params[:seed].to_i
+    @body_color = fillify(rgbify(generate_random_color))
+    @skin_color = fillify(rgbify(random_skin_tone))
 
     erb :index
   end
 
   private
+
+  def glasses
+    glasses = Dir.glob("./partials/*.svg").map { |glasses| Glasses.new(glasses) }
+  end
 
   def random_skin_tone
     skin_tones = YAML.load_file('skin_tones.yml')["skin_tones"]
