@@ -12,14 +12,17 @@ class App < Sinatra::Base
     srand params[:seed].to_i
     @body_color = fillify(rgbify(generate_random_color))
     @skin_color = fillify(rgbify(random_skin_tone))
+    @glasses = random_attribute_partial("glasses")
 
     erb :index
   end
 
   private
 
-  def glasses
-    glasses = Dir.glob("./partials/*.svg").map { |glasses| Glasses.new(glasses) }
+  def random_attribute_partial(name)
+    Dir.glob("./views/partials/#{name}/*.erb").map do |path|
+      path.gsub("./views/", "").gsub(".erb", "").to_sym
+    end.sample
   end
 
   def random_skin_tone
