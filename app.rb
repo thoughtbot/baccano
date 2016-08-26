@@ -1,5 +1,6 @@
 Bundler.require
 require 'yaml'
+require 'digest'
 require 'color/rgb/contrast'
 
 class App < Sinatra::Base
@@ -8,7 +9,7 @@ class App < Sinatra::Base
   end
 
   get '/:seed' do
-    srand params[:seed].to_i
+    srand Digest::MD5.hexdigest(params[:seed]).to_i(16)
     primary_color = generate_random_color
     background_color = random_different_color(primary_color)
     @body_color = fillify(primary_color.css_rgba)
@@ -39,7 +40,6 @@ class App < Sinatra::Base
 
   def random_different_color(color)
     attempt = generate_random_color
-    require 'color/rgb/contrast'
     if color.contrast(attempt) > 0.3
        attempt
     else
