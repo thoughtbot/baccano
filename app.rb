@@ -5,7 +5,7 @@ require 'color/rgb/contrast'
 
 class App < Sinatra::Base
   get '/' do
-   redirect "/#{rand(10000)}"
+    redirect "/#{SecureRandom.uuid}"
   end
 
   get '/:seed' do
