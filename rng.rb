@@ -1,4 +1,6 @@
 require_relative 'avatar'
+require 'color'
+require 'color/rgb/contrast'
 
 class Rng
   MINUMUM_CONTRAST = 0.4
