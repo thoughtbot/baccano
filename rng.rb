@@ -1,4 +1,6 @@
 require_relative 'avatar'
+require 'color'
+require 'color/rgb/contrast'
 
 class Rng
   MINUMUM_CONTRAST = 0.4
@@ -10,7 +12,7 @@ class Rng
   def avatar
     body = color
     background = contrasting_color(color)
-    Avatar.new(body, background, skin_tone, glasses)
+    Avatar.new(body, background, skin_tone, hair_color, glasses)
   end
 
   def contrasting_color(other)
@@ -35,10 +37,14 @@ class Rng
     Color::RGB.new(red, green, blue)
   end
 
+  def hair_color
+    red, green, blue = YAML.load_file('hair_colors.yml')["hair_colors"].sample
+    percentage(20, color ) { Color::RGB.new(red, green, blue) }
+  end
+
   def glasses
     percentage(60, "") { attribute_partial("glasses") }
   end
-
 
   private
 

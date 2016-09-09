@@ -1,12 +1,18 @@
 Bundler.require
 require 'yaml'
 require 'digest'
-require 'color/rgb/contrast'
 require_relative 'rng'
 
 class App < Sinatra::Base
   get '/' do
     redirect "/#{SecureRandom.uuid}"
+  end
+
+  get '/random' do
+    generator = Rng.new
+    @avatar = generator.avatar
+
+    erb :index
   end
 
   get '/:seed' do
