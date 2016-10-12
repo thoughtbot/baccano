@@ -12,7 +12,7 @@ class Rng
   def avatar
     body = color
     background = contrasting_color(color)
-    Avatar.new(body, background, skin_tone, hair_color, glasses)
+    Avatar.new(body, background, skin_tone, hair, hair_color, glasses)
   end
 
   def contrasting_color(other)
@@ -35,6 +35,10 @@ class Rng
   def skin_tone
     red, green, blue = YAML.load_file('skin_tones.yml')["skin_tones"].sample
     Color::RGB.new(red, green, blue)
+  end
+
+  def hair
+    percentage(5, "") { attribute_partial("hair") }
   end
 
   def hair_color
