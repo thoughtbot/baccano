@@ -12,6 +12,7 @@ class App < Sinatra::Base
     generator = Rng.new
     @avatar = generator.avatar
 
+    content_type 'image/svg+xml'
     erb :index
   end
 
@@ -19,6 +20,7 @@ class App < Sinatra::Base
     generator = Rng.new Digest::MD5.hexdigest(params[:seed]).to_i(16)
     @avatar = generator.avatar
 
+    content_type 'image/svg+xml'
     erb :index
   end
 end
