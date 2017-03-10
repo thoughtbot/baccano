@@ -1,40 +1,27 @@
-require_relative 'avatar'
-require 'color'
-require 'color/rgb/contrast'
+require_relative "avatar"
+require_relative "color_picker"
+require_relative "default"
 
 class Rng
-  MINUMUM_CONTRAST = 0.4
-
   def initialize(seed = Random.new_seed)
     srand seed
   end
 
   def avatar
-    body = color
-    background = contrasting_color(color)
-    Avatar.new(body, background, skin_tone, hair, hair_color, glasses, hair_background, eyes)
-  end
-
-  def contrasting_color(other)
-    attempt = color
-    if other.contrast(attempt) > MINUMUM_CONTRAST
-       attempt
-    else
-      contrasting_color(other)
-    end
-  end
-
-  def color
-    Color::RGB.new(channel, channel, channel)
-  end
-
-  def channel
-    (0..255).to_a.sample
+    Avatar.new(
+      background_color: body_color_picker.color_contrast,
+      body_color: body_color_picker.color,
+      glasses: glasses,
+      hair: hair,
+      hair_background: hair_background,
+      hair_color: hair_color,
+      skin_tone: skin_tone,
+      eyes: eyes,
+    )
   end
 
   def skin_tone
-    red, green, blue = YAML.load_file('skin_tones.yml')["skin_tones"].sample
-    Color::RGB.new(red, green, blue)
+    ColorPicker.new(name: "skin_tones").color_from_file
   end
 
   def hair_background
@@ -44,16 +31,17 @@ class Rng
   end
 
   def hair
-    @hair ||= percentage(5, "") { attribute_partial("hair") }
+    @_hair ||= Default.new(percentage: 5).check { attribute_partial("hair") }
   end
 
   def hair_color
-    red, green, blue = YAML.load_file('hair_colors.yml')["hair_colors"].sample
-    @hair_color ||= percentage(20, color ) { Color::RGB.new(red, green, blue) }
+    Default.new(percentage: 20, default: ColorPicker.new.color).check do
+      ColorPicker.new(name: "hair_colors").color_from_file
+    end
   end
 
   def glasses
-    percentage(60, "") { attribute_partial("glasses") }
+    Default.new(percentage: 60).check { attribute_partial("glasses") }
   end
 
   def eyes
@@ -62,12 +50,8 @@ class Rng
 
   private
 
-  def percentage(odds, default)
-    if (0...100).to_a.sample < odds
-      default
-    else
-      yield
-    end
+  def body_color_picker
+    @body_color ||= ColorPicker.new
   end
 
   def attribute_partial(name)

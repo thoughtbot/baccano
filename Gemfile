@@ -6,4 +6,5 @@ gem "sinatra"
 
 group :test do
   gem "minitest"
+  gem "pry"
 end

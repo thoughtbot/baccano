@@ -4,7 +4,7 @@ require "minitest/autorun"
 require "color"
 require File.expand_path "../../avatar.rb", __FILE__
 
-class AvatarTest < MiniTest::Unit::TestCase
+class AvatarTest < MiniTest::Test
   def avatar_class
     Avatar
   end
