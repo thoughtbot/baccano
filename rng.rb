@@ -12,7 +12,7 @@ class Rng
   def avatar
     body = color
     background = contrasting_color(color)
-    Avatar.new(body, background, skin_tone, hair, hair_color, glasses, hair_background)
+    Avatar.new(body, background, skin_tone, hair, hair_color, glasses, hair_background, eyes)
   end
 
   def contrasting_color(other)
@@ -54,6 +54,10 @@ class Rng
 
   def glasses
     percentage(60, "") { attribute_partial("glasses") }
+  end
+
+  def eyes
+    attribute_partial("eyes")
   end
 
   private
