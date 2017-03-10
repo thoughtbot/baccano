@@ -1,5 +1,9 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'sinatra'
-gem "rack-test", require: "rack/test"
 gem "color"
+gem "rack-test", require: "rack/test"
+gem "sinatra"
+
+group :test do
+  gem "minitest"
+end
