@@ -1,12 +1,12 @@
-class Default
-  def initialize(percentage: 100, default: "")
+class Fallback
+  def initialize(percentage:, fallback: "")
     @percentage = percentage
-    @default = default
+    @fallback = fallback
   end
 
   def check
     if (0..100).to_a.sample < percentage
-      default
+      fallback
     else
       yield
     end
@@ -14,5 +14,5 @@ class Default
 
   private
 
-  attr_reader :percentage, :default
+  attr_reader :percentage, :fallback
 end
