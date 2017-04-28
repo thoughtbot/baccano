@@ -2,7 +2,7 @@ require "color"
 require "color/rgb/contrast"
 
 class ColorPicker
-  MINUMUM_CONTRAST = 0.4
+  MINIMUM_CONTRAST = 0.4
 
   def initialize(name: nil)
     @name = name
@@ -38,7 +38,7 @@ class ColorPicker
 
   def generate_contrasting_color
     random_color = generate_random_color
-    if color.contrast(random_color) > MINUMUM_CONTRAST
+    if color.contrast(random_color) > MINIMUM_CONTRAST
       random_color
     else
       generate_contrasting_color

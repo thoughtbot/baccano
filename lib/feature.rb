@@ -1,9 +1,10 @@
 class Feature
   attr_reader :partial, :color
 
-  def initialize(partial:, color: nil)
+  def initialize(partial:, color: nil, views: "./views")
     @color = color
     @partial = partial
+    @views = views
   end
 
   def supplemental_partial
@@ -16,6 +17,8 @@ class Feature
 
   private
 
+  attr_reader :views
+
   def partial_string
     partial.to_s
   end
@@ -25,11 +28,11 @@ class Feature
   end
 
   def supplemental_partial_exists?
-    File.exists?(supplemental_full_path)
+    File.exist?(supplemental_full_path)
   end
 
   def supplemental_full_path
-    File.expand_path(File.join("views", supplemental_partial_path) + ".erb")
+    File.expand_path(File.join(views, supplemental_partial_path) + ".erb")
   end
 
   def name

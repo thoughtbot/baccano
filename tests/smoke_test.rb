@@ -1,8 +1,5 @@
-ENV["RACK_ENV"] = "test"
-require "minitest/autorun"
-require "rack/test"
-
-require File.expand_path "../../app.rb", __FILE__
+require_relative "./test_helper"
+require "app"
 
 class SmokeTest < MiniTest::Unit::TestCase
   include Rack::Test::Methods
