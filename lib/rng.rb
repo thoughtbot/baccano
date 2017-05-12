@@ -35,7 +35,7 @@ class Rng
   end
 
   def eyes
-    attribute_partial("eyes")
+    Feature.new(partial: attribute_partial("eyes"))
   end
 
   private

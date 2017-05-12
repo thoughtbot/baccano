@@ -1,8 +1,8 @@
 require "bundler"
 Bundler.require
 $LOAD_PATH.unshift File.expand_path(File.join("..", "lib"), __FILE__)
-require 'yaml'
-require 'digest'
+require "yaml"
+require "digest"
 require "rng"
 
 class App < Sinatra::Base

@@ -13,6 +13,7 @@ class AvatarTest < MiniTest::Test
       background_color: "background_color",
       skin_tone: "skin_tone",
       hair: "hair",
+      eyes: "eyes",
       glasses: "glasses",
     )
 
@@ -20,6 +21,7 @@ class AvatarTest < MiniTest::Test
     assert_equal avatar.background_color, "background_color"
     assert_equal avatar.skin_tone, "skin_tone"
     assert_equal avatar.hair, "hair"
+    assert_equal avatar.eyes, "eyes"
     assert_equal avatar.glasses, "glasses"
   end
 
@@ -29,6 +31,7 @@ class AvatarTest < MiniTest::Test
       background_color: Color::RGB.new(255, 255, 255),
       skin_tone: "skin_tone",
       hair: "hair",
+      eyes: "eyes",
       glasses: "glasses",
     )
 
@@ -41,6 +44,7 @@ class AvatarTest < MiniTest::Test
       background_color: "background_color",
       skin_tone: "skin_tone",
       hair: "hair",
+      eyes: "eyes",
       glasses: "glasses",
     )
 
