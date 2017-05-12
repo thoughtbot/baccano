@@ -1,5 +1,5 @@
 class Avatar
-  attr_reader :body_color, :hair, :background_color, :skin_tone, :glasses, :eyes
+  attr_reader :body_color, :hair, :background_color, :skin_tone, :glasses, :eyes, :body_size
 
   def initialize(
     background_color:,
@@ -7,6 +7,7 @@ class Avatar
     eyes:,
     glasses:,
     hair:,
+    body_size:,
     skin_tone:
   )
     @background_color = background_color
@@ -15,6 +16,7 @@ class Avatar
     @glasses = glasses
     @hair = hair
     @skin_tone = skin_tone
+    @body_size = body_size
   end
 
   def shadow_color

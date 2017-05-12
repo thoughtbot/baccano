@@ -15,6 +15,7 @@ class Rng
       glasses: glasses,
       hair: hair,
       skin_tone: skin_tone,
+      body_size: body_size,
       eyes: eyes,
     )
   end
@@ -36,6 +37,10 @@ class Rng
 
   def eyes
     Feature.new(partial: attribute_partial("eyes"))
+  end
+
+  def body_size
+    rand(0.85...1.3)
   end
 
   private
