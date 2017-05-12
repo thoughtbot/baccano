@@ -14,6 +14,7 @@ class AvatarTest < MiniTest::Test
       skin_tone: "skin_tone",
       hair: "hair",
       eyes: "eyes",
+      body_size: "body_size",
       glasses: "glasses",
     )
 
@@ -32,6 +33,7 @@ class AvatarTest < MiniTest::Test
       skin_tone: "skin_tone",
       hair: "hair",
       eyes: "eyes",
+      body_size: "body_size",
       glasses: "glasses",
     )
 
@@ -45,6 +47,7 @@ class AvatarTest < MiniTest::Test
       skin_tone: "skin_tone",
       hair: "hair",
       eyes: "eyes",
+      body_size: "body_size",
       glasses: "glasses",
     )
 
