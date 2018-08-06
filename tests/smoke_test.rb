@@ -1,7 +1,7 @@
 require_relative "./test_helper"
 require "app"
 
-class SmokeTest < MiniTest::Unit::TestCase
+class SmokeTest < MiniTest::Test
   include Rack::Test::Methods
 
   def app
