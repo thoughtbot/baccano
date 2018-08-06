@@ -5,7 +5,9 @@
   <g clip-path="url(#clip)">
     <rect id="bg" fill="<%= @avatar.background_color.css_rgba %>" x="0" y="0" width="200" height="200"/>
     <path id="shadow"  fill="<%= @avatar.shadow_color.css_rgba %>" d="M119,45l81,67l0,88l-97.2,0l16.2,-155Z"/>
-    <%= erb @avatar.hair.supplemental_partial, locals: { hair: @avatar.hair } %>
+    <% unless @avatar.hair.supplemental_partial.empty? %>
+      <%= erb @avatar.hair.supplemental_partial, locals: { hair: @avatar.hair } %>
+    <% end %>
     <path id="body"
       fill="<%= @avatar.body_color.css_rgba %>"
       d="M126.7,113.4c-3.8,-5 -15.2,-11.4 -26.7,-11.4c-11.4,0 -22.9,6.4 -26.7,11.4c-12.7,16.7 -21,43.2 -21,65.9c0,3 0.4,20.7 0.4,20.7l94.5,0c0,0 0.4,-17.6 0.4,-20.6c0.1,-22.8 -8.3,-49.4 -20.9,-66Z"
