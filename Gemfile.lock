@@ -13,8 +13,8 @@ GEM
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
-    rack-test (0.6.3)
-      rack (>= 1.0)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
