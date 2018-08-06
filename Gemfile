@@ -3,6 +3,7 @@ ruby "2.5.1"
 
 gem "color"
 gem "rack-test", require: "rack/test"
+gem "rake"
 gem "sinatra"
 
 group :test do
