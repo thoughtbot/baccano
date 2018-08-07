@@ -10,4 +10,5 @@ group :test do
   gem "minitest-reporters"
   gem "minitest"
   gem "pry"
+  gem "simplecov", require: false
 end
