@@ -14,7 +14,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    mustermann (1.0.2)
+    mustermann (1.0.3)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
