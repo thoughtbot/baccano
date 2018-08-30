@@ -22,4 +22,9 @@ class SmokeTest < MiniTest::Test
     get "/Hodor"
     assert_equal 200, last_response.status
   end
+
+  def test_nested_seed
+    get "/emails/user@example.com"
+    assert_equal 200, last_response.status
+  end
 end

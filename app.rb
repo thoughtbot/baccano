@@ -18,11 +18,24 @@ class App < Sinatra::Base
     erb :index
   end
 
-  get '/:seed' do
-    generator = Rng.new Digest::MD5.hexdigest(params[:seed]).to_i(16)
+  get '/*' do
     @avatar = generator.avatar
 
     content_type 'image/svg+xml'
     erb :index
+  end
+
+  private
+
+  def generator
+    Rng.new(digested_seed_value)
+  end
+
+  def digested_seed_value
+    Digest::MD5.hexdigest(seed_value).to_i(16)
+  end
+
+  def seed_value
+    params[:splat].to_s
   end
 end
