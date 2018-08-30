@@ -1,5 +1,13 @@
 class Avatar
-  attr_reader :body_color, :hair, :background_color, :skin_tone, :glasses, :eyes, :body_size
+  attr_reader(
+    :body_color,
+    :hair,
+    :background_color,
+    :skin_tone,
+    :glasses,
+    :eyes,
+    :body_size,
+  )
 
   def initialize(
     background_color:,
