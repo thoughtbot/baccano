@@ -7,8 +7,8 @@ class AvatarTest < MiniTest::Test
     Avatar
   end
 
-  def test_attributes
-    avatar = avatar_class.new(
+  def setup
+    @simple_avatar = avatar_class.new(
       body_color: "body_color",
       background_color: "background_color",
       skin_tone: "skin_tone",
@@ -17,13 +17,30 @@ class AvatarTest < MiniTest::Test
       body_size: "body_size",
       glasses: "glasses",
     )
+  end
 
-    assert_equal avatar.body_color, "body_color"
-    assert_equal avatar.background_color, "background_color"
-    assert_equal avatar.skin_tone, "skin_tone"
-    assert_equal avatar.hair, "hair"
-    assert_equal avatar.eyes, "eyes"
-    assert_equal avatar.glasses, "glasses"
+  def test_attributes_body_color
+    assert_equal @simple_avatar.body_color, "body_color"
+  end
+
+  def test_attributes_background_color
+    assert_equal @simple_avatar.background_color, "background_color"
+  end
+
+  def test_attributes_skin_tone
+    assert_equal @simple_avatar.skin_tone, "skin_tone"
+  end
+
+  def test_attributes_hair
+    assert_equal @simple_avatar.hair, "hair"
+  end
+
+  def test_attributes_eyes
+    assert_equal @simple_avatar.eyes, "eyes"
+  end
+
+  def test_attributes_glasses
+    assert_equal @simple_avatar.glasses, "glasses"
   end
 
   def test_shadow
