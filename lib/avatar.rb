@@ -1,4 +1,6 @@
 class Avatar
+  LIGHTING_CHANGE_AMOUNT = 70
+
   attr_reader(
     :background_color,
     :body_color,
@@ -28,10 +30,10 @@ class Avatar
   end
 
   def shadow_color
-    background_color.darken_by(70)
+    background_color.darken_by(LIGHTING_CHANGE_AMOUNT)
   end
 
   def body_highlight_color
-    body_color.lighten_by(70)
+    body_color.lighten_by(LIGHTING_CHANGE_AMOUNT)
   end
 end
