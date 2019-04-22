@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.6.2"
+ruby "2.6.3"
 
 gem "color"
 gem "rack-test", require: "rack/test"
