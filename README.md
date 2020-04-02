@@ -1,5 +1,7 @@
 # Baccano
 
+**This service is no longer maintained and will be taken offline on July 1, 2020.**
+
 1. User profile images
 2. `_____`
 3. profit?
